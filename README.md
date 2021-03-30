@@ -9,6 +9,8 @@
 
 在进行以下步骤之前，请先安装 Conan 包管理器（[官网](https://conan.io)）。如果有 Python 的话就从 `pip` 安装。（信科的学生电脑里应该都有吧。）
 
+Of course you should have CMake installed.
+
 ## Windows + Visual Studio
 
 测试版本：Visual Studio 2019。
@@ -66,4 +68,18 @@ mingw32-make                                               # 最后构建即可
 
 > `conan_mingw_profile.txt` 让 Conan 在构建第三方库的时候使用 GCC 而非 MSVC。
 
-## 
+## GNU/Linux
+
+Test environment: Ubuntu 20.04 + GCC 10.2.0
+
+You may need to install required dependencies first by `sudo apt install libgl-dev libglu1-mesa-dev`.
+
+```
+mkdir build && cd build     #
+conan install .. -b missing #
+cmake ..                    #
+make                        #
+```
+
+Then run `/build/bin/main`. Seems that VS Code can't launch this automatically. I don't know why.
+
