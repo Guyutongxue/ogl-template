@@ -13,7 +13,7 @@ Of course you should have CMake installed.
 
 ## Windows + Visual Studio
 
-测试环境：Windows 10 + Visual Studio 2019。
+测试环境：Windows 10 20H2 + Visual Studio 2019。
 
 先在仓库根目录执行：
 ```
@@ -32,7 +32,7 @@ cmake ..                    # 生成 VS 解决方案
 
 ## Windows + MinGW
 
-测试环境：Windows 10 + MinGW with GCC 10.2.0。（网上鲜有这个版本的 MinGW，欢迎前往 [Guyutongxue/mingw_release](https://github.com/Guyutongxue/mingw-release) 下载，或者国内网盘 https://wws.lanzous.com/iAj1Zge4fyd）
+测试环境：Windows 10 20H2 + MinGW with GCC 10.2.0。（网上鲜有这个版本的 MinGW，欢迎前往 [Guyutongxue/mingw_release](https://github.com/Guyutongxue/mingw-release) 下载，或者国内网盘 https://wws.lanzous.com/iAj1Zge4fyd）
 
 > 什么？您用 Dev-C++？那我建议您现在就关掉这个页面。
 
@@ -72,7 +72,7 @@ mingw32-make                                               # 最后构建即可
 
 ## GNU/Linux
 
-测试环境：Ubuntu 20.04 + GCC 10.2.0
+测试环境：Ubuntu 20.04 LTS + GCC 10.2.0
 
 你可能需要先安装一些库： `sudo apt install libgl-dev libglu1-mesa-dev`。
 
@@ -113,13 +113,21 @@ cmake .. -G Xcode           # 生成 Xcode 项目
 - 构建：`Product->Build`
 - 运行：首先在上方选择 `main` 为构建目标，然后 `Product->Run`。
 
-## Mac/Windows + CLion
+## 跨平台 CLion
 
-测试环境：macOS Big Sur + CLion 2020.3 + AppleClang 12.0.0
+测试环境
+- macOS Big Sur 11.2.3 + CLion 2020.3 + AppleClang 12.0.0
+- Windows 10 20H2 + CLion 2020.3 + MinGW with GCC 10.2.0
+- Windows 10 20H2 + CLion 2020.3 + Visual Studio 2019
+- Ubuntu 20.04 LTS + CLion 2020.3 + GCC 10.2.0
 
 安装官方的 [Conan 插件](https://plugins.jetbrains.com/plugin/11956-conan)，然后重启 CLion。
 
-点击下方 Conan 面板，首先左侧 Match profile 选择 default。然后按 Install 安装第三方库。
+（如果你使用 MSVC，需要在设置中将目标架构调整到 `amd64`。）
+
+直接在 CLion 中打开 `ogl-template` 这个文件夹。
+
+点击下方 Conan 面板，首先左侧 Match profile 选择 default。（如果你使用 MinGW ，需在设置中添加参数 `-pr ./conan_mingw_profile.txt`）然后按 Install 安装第三方库。
 
 再点击下方 CMake 面板，左侧 Reload CMake Project 重新配置。
 
